@@ -20,7 +20,7 @@ Explanation: 342 + 465 = 807.
 <hr>
 <br>
 
-<strong>My code result: Runtime: 88 ms, faster than 51.19% of Python3 online submissions for Add Two Numbers. Memory Usage: 13.2 MB, less than 74.42% of Python3 online submissions for Add Two Numbers.</strong>
+<strong>My code result - Runtime: 88 ms, faster than 51.19% of Python3 online submissions for Add Two Numbers. Memory Usage: 13.2 MB, less than 74.42% of Python3 online submissions for Add Two Numbers.</strong>
 
 ```python
 # Definition for singly-linked list.
@@ -87,8 +87,7 @@ Explanation: The answer is "wke", with the length of 3.
 <br>
 <hr>
 <br>
-<strong>Runtime: 544 ms, faster than 15.65% of Python3 online submissions for Longest Substring Without Repeating Characters.
-Memory Usage: 13.3 MB, less than 31.81% of Python3 online submissions for Longest Substring Without Repeating Characters.</strong>
+<strong>My code result - Runtime: 544 ms, faster than 15.65% of Python3 online submissions for Longest Substring Without Repeating Characters. Memory Usage: 13.3 MB, less than 31.81% of Python3 online submissions for Longest Substring Without Repeating Characters.</strong>
 
 
 ```python
