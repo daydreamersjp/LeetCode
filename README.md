@@ -1,5 +1,51 @@
 # LeetCode
 
+## 3. Longest Substring Without Repeating Characters
+### Medium
+
+<a href='https://leetcode.com/problems/longest-palindromic-substring/'>https://leetcode.com/problems/longest-palindromic-substring/</a>
+
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example 1:
+```
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+```
+
+Example 2:
+```
+Input: "cbbd"
+Output: "bb"
+```
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 3660 ms, faster than 32.02% of Python3 online submissions for Longest Palindromic Substring.<br>
+Memory Usage: 13.2 MB, less than 53.68% of Python3 online submissions for Longest Palindromic Substring.</strong>
+<br>
+
+```python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        result_len = 0
+        result_str = ''
+        whole_len = len(s)
+        for i in range(whole_len):
+            if whole_len - i < result_len:
+                break
+            else:
+                for j in range(i+result_len+1, whole_len+1):
+                    test_s = s[i:j]
+                    if test_s == test_s[::-1]:
+                        result_len = j - i
+                        result_str = test_s
+        return result_str
+```
+
+<br><hr><br>
+
 
 ## 3. Longest Substring Without Repeating Characters
 ### Medium
