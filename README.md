@@ -13,5 +13,36 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
 ```
+<hr>
 
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        return self.convertNum2LN(self.convertLN2Num(l1) + self.convertLN2Num(l2))
+           
+            
+    def convertLN2Num(self, l0: ListNode) -> int:
+        res = l0.val
+        i = 1
+        while (l0.next != None):
+            l0 = l0.next
+            res = res + l0.val*10**i
+            i += 1
+        return res
+    
+    def convertNum2LN(self, num0: int) -> ListNode:
+        if len(str(num0))==1:
+            res = ListNode(num0)
+            res.next = None
+        else:
+            res = ListNode(num0 % 10)
+            res.next = self.convertNum2LN(num0 // 10)
+        return res
+```
 
