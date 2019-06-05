@@ -53,7 +53,7 @@ class Solution:
         return res
 ```
 
-<br><br>
+<br><hr><br>
 
 ## 3. Longest Substring Without Repeating Characters
 ### Medium
@@ -87,6 +87,7 @@ Explanation: The answer is "wke", with the length of 3.
 <br>
 <strong>Runtime: 544 ms, faster than 15.65% of Python3 online submissions for Longest Substring Without Repeating Characters.
 Memory Usage: 13.3 MB, less than 31.81% of Python3 online submissions for Longest Substring Without Repeating Characters.</strong>
+
 
 ```python
 from collections import Counter
