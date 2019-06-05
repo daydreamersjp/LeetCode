@@ -34,7 +34,7 @@ Explanation: The answer is "wke", with the length of 3.
 <hr>
 <br>
 <strong>My code result - Date unknown<br>Runtime: 544 ms, faster than 15.65% of Python3 online submissions for Longest Substring Without Repeating Characters. <br>Memory Usage: 13.3 MB, less than 31.81% of Python3 online submissions for Longest Substring Without Repeating Characters.</strong>
-
+<br>
 
 ```python
 from collections import Counter
@@ -78,7 +78,8 @@ Explanation: 342 + 465 = 807.
 <hr>
 <br>
 
-<strong>My code result - Runtime: 88 ms, faster than 51.19% of Python3 online submissions for Add Two Numbers. Memory Usage: 13.2 MB, less than 74.42% of Python3 online submissions for Add Two Numbers.</strong>
+<strong>My code result - Date unknown<br>Runtime: 88 ms, faster than 51.19% of Python3 online submissions for Add Two Numbers. <br>Memory Usage: 13.2 MB, less than 74.42% of Python3 online submissions for Add Two Numbers.</strong>
+<br>
 
 ```python
 # Definition for singly-linked list.
