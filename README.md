@@ -13,7 +13,9 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
 ```
+
 <hr>
+#### Result: Runtime: 88 ms, faster than 51.19% of Python3 online submissions for Add Two Numbers. Memory Usage: 13.2 MB, less than 74.42% of Python3 online submissions for Add Two Numbers.
 
 ```python
 # Definition for singly-linked list.
