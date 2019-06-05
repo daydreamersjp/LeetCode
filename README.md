@@ -58,6 +58,8 @@ class Solution:
 ## 3. Longest Substring Without Repeating Characters
 ### Medium
 
+<a href='https://leetcode.com/problems/longest-substring-without-repeating-characters/'>https://leetcode.com/problems/longest-substring-without-repeating-characters/</a>
+
 Given a string, find the length of the longest substring without repeating characters.
 
 Example 1:
