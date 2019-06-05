@@ -1,15 +1,13 @@
 # LeetCode
 
 Runtime Statistics:<br>
-Top 0-20%   : 2 times
-Top 20-40%  : 1 time 
-Top 40-60%  : 1 time
-Top 60-80%  : 0 time
-Top 80-100% : 2 times
+Top 0-20%   : 2 times   <br>
+Top 20-40%  : 1 time    <br>
+Top 40-60%  : 1 time    <br>
+Top 60-80%  : 0 time    <br>
+Top 80-100% : 2 times   <br>
 
-<br>
 <hr>
-<br>
 ## 8. String to Integer (atoi)
 ### Medium
 
