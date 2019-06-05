@@ -1,5 +1,55 @@
 # LeetCode
 
+## 7. Reverse Integer
+### Easy
+
+<a href='https://leetcode.com/problems/reverse-integer/'>https://leetcode.com/problems/reverse-integer/</a>
+
+Given a 32-bit signed integer, reverse digits of an integer.
+
+Example 1:
+```
+Input: 123
+Output: 321
+```
+Example 2:
+```
+Input: -123
+Output: -321
+```
+Example 3:
+```
+Input: 120
+Output: 21
+```
+Note:
+Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 40 ms, faster than 82.77% of Python3 online submissions for Reverse Integer.<br>
+Memory Usage: 13.3 MB, less than 34.33% of Python3 online submissions for Reverse Integer.</strong>
+<br>
+
+```python
+class Solution:
+    def reverse(self, x: int) -> int:
+        neg = False
+        if (x < 0): 
+            neg = True
+            x = x * (-1)
+        l = [x for x in str(x)]
+        res = int(''.join(l[::-1]))
+        if (neg == True): res = res * (-1)
+        if (res < -2**31 or res > 2**31 -1): 
+            return 0
+        else:
+            return res
+```
+
+<br><hr><br>
+
+
 ## 6. ZigZag Conversion
 ### Medium
 
