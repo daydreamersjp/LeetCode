@@ -3,7 +3,7 @@
 Runtime Statistics:<br>
 Top 0-20%   : 2 times   <br>
 Top 20-40%  : 1 time    <br>
-Top 40-60%  : 1 time    <br>
+Top 40-60%  : 2 times    <br>
 Top 60-80%  : 0 time    <br>
 Top 80-100% : 3 times   <br>
 
@@ -14,11 +14,11 @@ Top 80-100% : 3 times   <br>
 
 <a href='https://leetcode.com/problems/container-with-most-water/'>https://leetcode.com/problems/container-with-most-water/</a>
 
-Given n non-negative integers a_1, a_2, ..., a_n , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, a_i) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+Given n non-negative integers a_1, a_2, ..., a_n , where each represents a point at coordinate (i, a_i). n vertical lines are drawn such that the two endpoints of line i is at (i, a_i) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
 
 Note: You may not slant the container and n is at least 2.
 
-
+![](./img/question_11.jpg)
 
 The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
 
@@ -32,17 +32,29 @@ Output: 49
 <br>
 <hr>
 <br>
-<strong>My code result - Date unknown<br>Runtime: 64 ms, faster than 95.72% of Python3 online submissions for Palindrome Number.<br>
-Memory Usage: 13.2 MB, less than 83.12% of Python3 online submissions for Palindrome Number.</strong>
+<strong>My code result - Date unknown<br>Runtime: 68 ms, faster than 58.56% of Python3 online submissions for Container With Most Water.
+<br>Memory Usage: 14.5 MB, less than 43.08% of Python3 online submissions for Container With Most Water.</strong>
 <br>
 
 ```python
 class Solution:
-    def isPalindrome(self, x: int) -> bool:
-        s = str(x)
-        if (s[::-1]==s):
-            return True
-        return False
+    def maxArea(self, height: List[int]) -> int:
+        
+        le_ind = 0
+        re_ind = len(height) - 1
+        vol = min(height[le_ind], height[re_ind])*(re_ind - le_ind) 
+
+        while (le_ind != re_ind):
+            if (height[le_ind] < height[re_ind]):
+                le_ind += 1
+                vol_temp = min(height[le_ind], height[re_ind])*(re_ind - le_ind) 
+            else:
+                re_ind -= 1
+                vol_temp = min(height[le_ind], height[re_ind])*(re_ind - le_ind) 
+            vol = max(vol,vol_temp)
+            
+        return vol
+        
 ```
 
 <br><hr><br>
