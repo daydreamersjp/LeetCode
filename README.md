@@ -1,6 +1,80 @@
 # LeetCode
 
-## 3. Longest Substring Without Repeating Characters
+## 6. ZigZag Conversion
+### Medium
+
+<a href='https://leetcode.com/problems/zigzag-conversion/'>https://leetcode.com/problems/zigzag-conversion/</a>
+
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+```
+P   A   H   N
+A P L S I I G
+Y   I   R
+```
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows:
+```
+string convert(string s, int numRows);
+```
+Example 1:
+```
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+```
+
+Example 2:
+```
+Input: s = "PAYPALISHIRING", numRows = 4
+Output: "PINALSIGYAHRPI"
+Explanation:
+
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+```
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 1032 ms, faster than 5.01% of Python3 online submissions for ZigZag Conversion.<br>
+Memory Usage: 19.9 MB, less than 5.00% of Python3 online submissions for ZigZag Conversion.</strong>
+<br>
+
+```python
+import math
+
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if (len(s) <= 1 or numRows <= 1):
+            return s
+        else:
+            convmat = [[""] * math.ceil(len(s)/(2*numRows-2))*(numRows-1) for r in range(numRows)]
+
+            ind = 0
+            for i in range(math.ceil(len(s)/(2*numRows-2))):
+                for j in range(2*numRows-2):
+                    if (ind==len(s)):
+                        break
+                    else:
+                        if (j < numRows):
+                            convmat[j][i*(numRows-1)] = s[ind]
+                            ind += 1
+                        else:
+                            convmat[2*numRows - j -2][j - numRows + 1 + i*(numRows-1)] = s[ind]
+                            ind += 1
+            res = ''
+            for i in range(len(convmat)):
+                for j in range(len(convmat[0])):
+                    res += convmat[i][j]
+            return res
+```
+
+<br><hr><br>
+
+
+
+## 5. Longest Palindromic Substring
 ### Medium
 
 <a href='https://leetcode.com/problems/longest-palindromic-substring/'>https://leetcode.com/problems/longest-palindromic-substring/</a>
