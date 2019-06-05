@@ -3,11 +3,190 @@
 Runtime Statistics:<br>
 Top 0-20%   : 2 times   <br>
 Top 20-40%  : 1 time    <br>
-Top 40-60%  : 2 times    <br>
+Top 40-60%  : 3 times    <br>
 Top 60-80%  : 0 time    <br>
-Top 80-100% : 3 times   <br>
+Top 80-100% : 4 times   <br>
 
 <hr>
+
+## 13. Roman to Integer
+### Easy
+
+<a href='https://leetcode.com/problems/roman-to-integer/'>https://leetcode.com/problems/roman-to-integer/</a>
+
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+```
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+```
+For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+I can be placed before V (5) and X (10) to make 4 and 9. 
+X can be placed before L (50) and C (100) to make 40 and 90. 
+C can be placed before D (500) and M (1000) to make 400 and 900.
+Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
+
+Example 1:
+```
+Input: "III"
+Output: 3
+```
+Example 2:
+```
+Input: "IV"
+Output: 4
+```
+Example 3:
+```
+Input: "IX"
+Output: 9
+```
+Example 4:
+```
+Input: "LVIII"
+Output: 58
+Explanation: L = 50, V= 5, III = 3.
+```
+Example 5:
+```
+Input: "MCMXCIV"
+Output: 1994
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+```
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 56 ms, faster than 95.07% of Python3 online submissions for Roman to Integer.
+<br>Memory Usage: 13.1 MB, less than 97.82% of Python3 online submissions for Roman to Integer.</strong>
+<br>
+
+```python
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        twoChar = {'IV': 4,
+                   'IX': 9,
+                   'XL': 40,
+                   'XC': 90,
+                   'CD': 400,
+                   'CM': 900,}
+        oneChar = {'I': 1,
+                   'V': 5,
+                   'X': 10,
+                   'L': 50,
+                   'C': 100,
+                   'D': 500,
+                   'M': 1000,}
+        
+        s_t = s
+        res = 0
+        while (len(s_t) != 0):
+            if (s_t[0:2] in twoChar): 
+                res += twoChar[s_t[0:2]]
+                s_t = s_t[2:]
+            else: 
+                res += oneChar[s_t[0]]
+                s_t = s_t[1:]
+        
+        return res
+```
+
+<br><hr><br>
+
+## 12. Integer to Roman
+### Medium
+
+<a href='https://leetcode.com/problems/integer-to-roman/'>https://leetcode.com/problems/integer-to-roman/</a>
+
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+```
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+```
+For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+I can be placed before V (5) and X (10) to make 4 and 9. 
+X can be placed before L (50) and C (100) to make 40 and 90. 
+C can be placed before D (500) and M (1000) to make 400 and 900.
+Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
+
+Example 1:
+```
+Input: 3
+Output: "III"
+```
+Example 2:
+```
+Input: 4
+Output: "IV"
+```
+Example 3:
+```
+Input: 9
+Output: "IX"
+```
+Example 4:
+```
+Input: 58
+Output: "LVIII"
+Explanation: L = 50, V = 5, III = 3.
+```
+Example 5:
+```
+Input: 1994
+Output: "MCMXCIV"
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+```
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 68 ms, faster than 54.02% of Python3 online submissions for Integer to Roman.<br>
+Memory Usage: 13.3 MB, less than 68.40% of Python3 online submissions for Integer to Roman.</strong>
+<br>
+
+```python
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        thousand = hundred = ten = one = 0        
+        
+        thousand = num // 1000
+        hundred = (num // 100) - thousand * 10
+        ten = (num // 10) - thousand * 100 - hundred *10
+        one = num % 10
+       
+        return self.Roman0to9byPos(thousand,'M','_','_') + \
+               self.Roman0to9byPos(hundred,'C','D','M') + \
+               self.Roman0to9byPos(ten,'X','L','C') + \
+               self.Roman0to9byPos(one,'I','V','X')        
+
+    
+    def Roman0to9byPos(self,num,one,five,ten):
+        'expect num: 0-9'
+        'others: str'
+        if (num==0): return ''
+        elif (num<=3): return one*num
+        elif (num==4): return one+five
+        elif (num==5): return five
+        elif (num<=8): return five+one*(num-5)
+        else: return one+ten
+```
+
+<br><hr><br>
 
 ## 11. Container With Most Water
 ### Medium
