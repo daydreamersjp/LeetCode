@@ -5,9 +5,93 @@ Top 0-20%   : 2 times   <br>
 Top 20-40%  : 1 time    <br>
 Top 40-60%  : 1 time    <br>
 Top 60-80%  : 0 time    <br>
-Top 80-100% : 2 times   <br>
+Top 80-100% : 3 times   <br>
 
 <hr>
+
+## 11. Container With Most Water
+### Medium
+
+<a href='https://leetcode.com/problems/container-with-most-water/'>https://leetcode.com/problems/container-with-most-water/</a>
+
+Given n non-negative integers a_1, a_2, ..., a_n , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, a_i) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+
+Note: You may not slant the container and n is at least 2.
+
+
+
+The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+ 
+
+Example:
+```
+Input: [1,8,6,2,5,4,8,3,7]
+Output: 49
+```
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 64 ms, faster than 95.72% of Python3 online submissions for Palindrome Number.<br>
+Memory Usage: 13.2 MB, less than 83.12% of Python3 online submissions for Palindrome Number.</strong>
+<br>
+
+```python
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        s = str(x)
+        if (s[::-1]==s):
+            return True
+        return False
+```
+
+<br><hr><br>
+
+## 9. Palindrome Number
+### Easy
+
+<a href='https://leetcode.com/problems/palindrome-number/'>https://leetcode.com/problems/palindrome-number/</a>
+
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+Example 1:
+```
+Input: 121
+Output: true
+```
+Example 2:
+```
+Input: -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+```
+Example 3:
+```
+Input: 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+```
+Follow up:
+
+Coud you solve it without converting the integer to a string?
+
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 64 ms, faster than 95.72% of Python3 online submissions for Palindrome Number.<br>
+Memory Usage: 13.2 MB, less than 83.12% of Python3 online submissions for Palindrome Number.</strong>
+<br>
+
+```python
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        s = str(x)
+        if (s[::-1]==s):
+            return True
+        return False
+```
+
+<br><hr><br>
 
 ## 8. String to Integer (atoi)
 ### Medium
