@@ -1,13 +1,145 @@
 # LeetCode
 
 Runtime Statistics:<br>
-Top 0-20%   : 2 times   <br>
-Top 20-40%  : 1 time    <br>
+Top 0-20%   : 3 times   <br>
+Top 20-40%  : 2 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 0 time    <br>
-Top 80-100% : 6 times   <br>
+Top 80-100% : 7 times   <br>
 
 <hr>
+
+## 20. Valid Parentheses
+### Easy
+
+<a href='https://leetcode.com/problems/valid-parentheses/'>https://leetcode.com/problems/valid-parentheses/</a>
+
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.
+
+Example 1:
+```
+Input: "()"
+Output: true
+```
+Example 2:
+```
+Input: "()[]{}"
+Output: true
+```
+Example 3:
+```
+Input: "(]"
+Output: false
+```
+Example 4:
+```
+Input: "([)]"
+Output: false
+```
+Example 5:
+```
+Input: "{[]}"
+Output: true
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 44 ms, faster than 27.52% of Python3 online submissions for Valid Parentheses.<br>
+Memory Usage: 13.2 MB, less than 42.31% of Python3 online submissions for Valid Parentheses.</strong>
+<br>
+
+```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if (s==''): return True
+        
+        s0 = ''
+        s1 = s
+        while (s0!=s1):
+            s0 = s1
+            s1 = s1.replace('()','').replace('{}','').replace('[]','')
+        if (s1==''): return True
+        else: return False
+```
+
+<br><hr><br>
+
+## 18. 4Sum
+### Medium
+
+<a href='https://leetcode.com/problems/4sum/'>https://leetcode.com/problems/4sum/</a>
+
+Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
+
+Note:
+
+The solution set must not contain duplicate quadruplets.
+
+Example:
+```
+Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.
+
+A solution set is:
+[
+  [-1,  0, 0, 1],
+  [-2, -1, 1, 2],
+  [-2,  0, 0, 2]
+]
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 2176 ms, faster than 5.00% of Python3 online submissions for 4Sum.<br>
+Memory Usage: 13.2 MB, less than 69.46% of Python3 online submissions for 4Sum.</strong>
+<br>
+
+```python
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        if (len(nums)<=3): return []
+        if (len(nums)==4 and sum(nums)==target): return [nums]
+        
+        nums.sort()
+        
+        res = []
+        
+        for a in range(len(nums)-3):
+            for b in range(a+1,len(nums)-2):
+                if (b<a+1 and nums[b-1]==nums[b]): 
+                    continue
+                    
+                c = b+1
+                d = len(nums)-1
+                
+                while (c!=d):
+                    if (nums[a]+nums[b]+nums[c]+nums[d]==target):
+                        res_t = [nums[a],nums[b],nums[c],nums[d]]
+                        if res_t not in res:
+                            res += [res_t]
+                        if (d-c==1): 
+                            break
+                        else:
+                            c += 1
+                            d -= 1
+                    elif (nums[a]+nums[b]+nums[c]+nums[d]>target):
+                        d -= 1
+                    elif (nums[a]+nums[b]+nums[c]+nums[d]<target):
+                        c += 1
+        
+        
+        
+        return res
+```
+
+<br><hr><br>
 
 ## 17. Letter Combinations of a Phone Number
 ### Medium
