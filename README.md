@@ -7,6 +7,12 @@ Top 40-60%  : 3 times    <br>
 Top 60-80%  : 0 time    <br>
 Top 80-100% : 7 times   <br>
 
+
+Hyperlink<br>
+[20. Valid Parentheses](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#20-valid-parentheses)
+
+
+
 <hr>
 
 ## 20. Valid Parentheses
