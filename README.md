@@ -5,9 +5,184 @@ Top 0-20%   : 2 times   <br>
 Top 20-40%  : 1 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 0 time    <br>
-Top 80-100% : 4 times   <br>
+Top 80-100% : 6 times   <br>
 
 <hr>
+
+## 17. Letter Combinations of a Phone Number
+### Medium
+
+<a href='https://leetcode.com/problems/letter-combinations-of-a-phone-number/'>https://leetcode.com/problems/letter-combinations-of-a-phone-number/</a>
+
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
+
+A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+img[](./img/200px-Telephone-keypad2.svg.png)
+
+Example:
+```
+Input: "23"
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+```
+Note:
+
+Although the above answer is in lexicographical order, your answer could be in any order you want.
+
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 28 ms, faster than 99.42% of Python3 online submissions for Letter Combinations of a Phone Number.<br>
+Memory Usage: 13 MB, less than 87.66% of Python3 online submissions for Letter Combinations of a Phone Number.</strong>
+<br>
+
+```python
+import itertools
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if (len(digits)==0): return []
+        
+        dc = {
+            '2': ['a','b','c'],
+            '3': ['d','e','f'],
+            '4': ['g','h','i'],
+            '5': ['j','k','l'],
+            '6': ['m','n','o'],
+            '7': ['p','q','r','s'],
+            '8': ['t','u','v'],
+            '9': ['w','x','y','z'],
+        }
+        
+        strlis = [dc[d] for d in digits]
+        
+        resls = [list(comb) for comb in itertools.product(*strlis)]
+        
+        
+        
+        res = []
+        for i in range(len(resls)):
+            res_t = ''
+            for j in range(len(resls[i])):
+                res_t += resls[i][j]
+            res += [res_t]
+        
+        return res
+            
+```
+
+<br><hr><br>
+
+## 16. 3Sum Closest
+### Medium
+
+<a href='https://leetcode.com/problems/3sum-closest/'>https://leetcode.com/problems/3sum-closest/</a>
+
+Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
+
+Example:
+```
+Given array nums = [-1, 2, 1, -4], and target = 1.
+
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+```
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 92 ms, faster than 90.68% of Python3 online submissions for 3Sum Closest.<br>
+Memory Usage: 13.2 MB, less than 46.15% of Python3 online submissions for 3Sum Closest.</strong>
+<br>
+
+```python
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        
+        res = nums[0] + nums[1] + nums[2]
+        
+        for x in range(0,len(nums)-2):
+            if x > 0 and nums[x] == nums[x - 1]:
+                continue
+                
+            y=x+1
+            z=len(nums)-1
+            
+            while (y!=z):
+                total = nums[x]+nums[y]+nums[z]
+                if (abs(total-target)<abs(res-target)):
+                    res = total
+                    
+                if (total>target):
+                    z -= 1
+                elif (total<target):
+                    y += 1
+                else:
+                    return res
+        
+        return res
+```
+
+<br><hr><br>
+
+## 14. Longest Common Prefix
+### Easy
+
+<a href='https://leetcode.com/problems/longest-common-prefix/'>https://leetcode.com/problems/longest-common-prefix/</a>
+
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+
+Example 1:
+```
+Input: ["flower","flow","flight"]
+Output: "fl"
+```
+
+Example 2:
+```
+Input: ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+```
+Note:
+
+All given inputs are in lowercase letters a-z.
+<br>
+<hr>
+<br>
+<strong>My code result - Date unknown<br>Runtime: 36 ms, faster than 92.77% of Python3 online submissions for Longest Common Prefix.<br>
+Memory Usage: 13.2 MB, less than 55.78% of Python3 online submissions for Longest Common Prefix.</strong>
+<br>
+
+```python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if len(strs)==0: return ''
+        if len(strs)==1: return strs[0]
+        
+        res = ''
+        
+        strsset = set(strs)
+        strsset = sorted(strsset,key=len)
+        
+        i = 0
+        res = ''
+        common = True
+        while (i < len(strsset[0]) and common == True):
+            for j in range(1,len(strsset)):
+                if strsset[0][i] != strsset[j][i]:
+                    common = False
+                    break
+            if (common == True):
+                res += strsset[0][i]
+            i += 1
+        
+        return res
+```
+
+<br><hr><br>
 
 ## 13. Roman to Integer
 ### Easy
