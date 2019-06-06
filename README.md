@@ -6,7 +6,7 @@ Top 20-40%  : 2 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 0 time    <br>
 Top 80-100% : 7 times   <br>
-
+Total: 15 questions accepted <br>
 
 Questions:<br>
 [(Medium) 2. Add Two Numbers](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
