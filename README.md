@@ -9,21 +9,21 @@ Top 80-100% : 7 times   <br>
 
 
 Questions:<br>
-[2. Add Two Numbers (Medium)](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
-[3. Longest Substring Without Repeating Characters (Medium)](https://github.com/daydreamersjp/LeetCode#3-longest-substring-without-repeating-characters)<br>
-[5. Longest Palindromic Substring (Medium)](https://github.com/daydreamersjp/LeetCode#5-longest-palindromic-substring)<br>
-[6. ZigZag Conversion (Medium)](https://github.com/daydreamersjp/LeetCode#6-zigzag-conversion)<br>
-[7. Reverse Integer (Easy)](https://github.com/daydreamersjp/LeetCode#7-reverse-integer)<br>
-[8. String to Integer (atoi) (Medium)](https://github.com/daydreamersjp/LeetCode#8-string-to-integer-atoi)<br>
-[9. Palindrome Number (Easy)](https://github.com/daydreamersjp/LeetCode#9-palindrome-number)<br>
-[11. Container With Most Water (Medium)](https://github.com/daydreamersjp/LeetCode#11-container-with-most-water)<br>
-[12. Integer to Roman (Medium)](https://github.com/daydreamersjp/LeetCode#12-integer-to-roman)<br>
-[13. Roman to Integer (Easy)](https://github.com/daydreamersjp/LeetCode#13-roman-to-integer)<br>
-[14. Longest Common Prefix (Easy)](https://github.com/daydreamersjp/LeetCode#14-longest-common-prefix)<br>
-[16. 3Sum Closest (Medium)](https://github.com/daydreamersjp/LeetCode#16-3sum-closest)<br>
-[17. Letter Combinations of a Phone Number (Medium)](https://github.com/daydreamersjp/LeetCode#17-letter-combinations-of-a-phone-number)<br>
-[18. 4Sum (Medium)](https://github.com/daydreamersjp/LeetCode#18-4sum)<br>
-[20. Valid Parentheses (Easy)](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#20-valid-parentheses)<br>
+[(Medium) 2. Add Two Numbers](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
+[(Medium) 3. Longest Substring Without Repeating Characters](https://github.com/daydreamersjp/LeetCode#3-longest-substring-without-repeating-characters)<br>
+[(Medium) 5. Longest Palindromic Substring](https://github.com/daydreamersjp/LeetCode#5-longest-palindromic-substring)<br>
+[(Medium) 6. ZigZag Conversion](https://github.com/daydreamersjp/LeetCode#6-zigzag-conversion)<br>
+[(Easy) 7. Reverse Integer](https://github.com/daydreamersjp/LeetCode#7-reverse-integer)<br>
+[(Medium) 8. String to Integer (atoi)](https://github.com/daydreamersjp/LeetCode#8-string-to-integer-atoi)<br>
+[(Easy) 9. Palindrome Number](https://github.com/daydreamersjp/LeetCode#9-palindrome-number)<br>
+[(Medium) 11. Container With Most Water](https://github.com/daydreamersjp/LeetCode#11-container-with-most-water)<br>
+[(Medium) 12. Integer to Roman](https://github.com/daydreamersjp/LeetCode#12-integer-to-roman)<br>
+[(Easy) 13. Roman to Integer](https://github.com/daydreamersjp/LeetCode#13-roman-to-integer)<br>
+[(Easy) 14. Longest Common Prefix](https://github.com/daydreamersjp/LeetCode#14-longest-common-prefix)<br>
+[(Medium) 16. 3Sum Closest](https://github.com/daydreamersjp/LeetCode#16-3sum-closest)<br>
+[(Medium) 17. Letter Combinations of a Phone Number](https://github.com/daydreamersjp/LeetCode#17-letter-combinations-of-a-phone-number)<br>
+[(Medium) 18. 4Sum](https://github.com/daydreamersjp/LeetCode#18-4sum)<br>
+[(Easy) 20. Valid Parentheses](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#20-valid-parentheses)<br>
 
 <hr>
 
