@@ -194,7 +194,7 @@ Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be valid
 2.Each column must contain the digits 1-9 without repetition.
 3.Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
 
-img[](./img/250px-Sudoku-by-L2G-20050714.svg.png)
+![](./img/250px-Sudoku-by-L2G-20050714.svg.png)
 
 A partially filled sudoku which is valid.
 
@@ -1013,7 +1013,7 @@ Given a string containing digits from 2-9 inclusive, return all possible letter 
 
 A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
 
-img[](./img/200px-Telephone-keypad2.svg.png)
+![](./img/200px-Telephone-keypad2.svg.png)
 
 Example:
 ```
