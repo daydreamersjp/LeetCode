@@ -1,12 +1,12 @@
 # LeetCode
 
 Runtime Statistics:<br>
-Top 0-20%   : 5 times   <br>
+Top 0-20%   : 8 times   <br>
 Top 20-40%  : 2 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 0 time    <br>
-Top 80-100% : 10 times   <br>
-Total: 20 questions accepted <br>
+Top 80-100% : 15 times   <br>
+Total: 27 questions accepted <br>
 
 Questions:<br>
 [(Medium) 2. Add Two Numbers](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
@@ -29,8 +29,571 @@ Questions:<br>
 [(Medium) 24. Swap Nodes in Pairs](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#24-swap-nodes-in-pairs)<br>
 [(Easy) 26. Remove Duplicates from Sorted Array](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#26-remove-duplicates-from-sorted-array)<br>
 [(Easy) 27. Remove Element](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#27-remove-element)<br>
+[(Easy) 28. Implement strStr()](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#28-implement-strstr)<br>
+[(Medium) 31. Next Permutation](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#31-next-permutation)<br>
+[(Medium) 33. Search in Rotated Sorted Array](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#33-search-in-rotated-sorted-array)<br>
+[(Medium) 34. Find First and Last Position of Element in Sorted Array](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#34-find-first-and-last-position-of-element-in-sorted-array)<br>
+[(Easy) 35. Search Insert Position](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#35-search-insert-position)<br>
+[(Medium) 36. Valid Sudoku](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#36-valid-sudoku)<br>
+[(Easy) 38. Count and Say](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#38-count-and-say)<br>
+[(Medium) 39. Combination Sum](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#39-combination-sum)<br>
+
 
 <hr>
+
+## 39. Combination Sum
+### Medium
+
+<a href='https://leetcode.com/problems/combination-sum/'>https://leetcode.com/problems/combination-sum/</a>
+
+Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+
+The same repeated number may be chosen from candidates unlimited number of times.
+
+Note:
+
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+Example 1:
+```
+Input: candidates = [2,3,6,7], target = 7,
+A solution set is:
+[
+  [7],
+  [2,2,3]
+]
+```
+Example 2:
+```
+Input: candidates = [2,3,5], target = 8,
+A solution set is:
+[
+  [2,2,2,2],
+  [2,3,3],
+  [3,5]
+]
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 152 ms, faster than 16.97% of Python3 online submissions for Combination Sum.
+<br>Memory Usage: 13.3 MB, less than 37.40% of Python3 online submissions for Combination Sum.</strong>
+<br>
+
+```python
+class Solution:
+    def combinationSum(self, c: List[int], t: int) -> List[List[int]]:
+        if (len(c)==0): return []
+        if (min(c)>t): return []
+        
+        if (len(c)==1):
+            if (t % c[0] == 0): return [[c[0]]*(t // c[0])]       
+        
+        res = []
+        if ((t % max(c)) == 0): 
+            res +=  [[max(c)]*(t // max(c))]
+        for i in range(0,(t // max(c)) + 1):
+            t0 = t - i * max(c)
+            c0 = [v for v in c]
+            c0.remove(max(c))
+            res0 = self.combinationSum(c0, t0)
+            r0 = [sorted(r + [max(c)]*i) for r in res0]
+            for r in r0:
+                if (r not in res):
+                    res += [r]
+        
+        return res
+```
+
+<br><hr><br>
+
+## 38. Count and Say
+### Easy
+
+<a href='https://leetcode.com/problems/count-and-say/'>https://leetcode.com/problems/count-and-say/</a>
+
+The count-and-say sequence is the sequence of integers with the first five terms as following:
+```
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+```
+1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.
+
+Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
+
+Note: Each term of the sequence of integers will be represented as a string.
+
+ 
+
+Example 1:
+```
+Input: 1
+Output: "1"
+```
+Example 2:
+```
+Input: 4
+Output: "1211"
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 40 ms, faster than 87.77% of Python3 online submissions for Count and Say.
+<br>Memory Usage: 13 MB, less than 88.84% of Python3 online submissions for Count and Say.</strong>
+<br>
+
+```python
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        if n==1: 
+            return '1'
+            
+        res = '1'        
+        for _ in range(1,n):
+            res = self.countAndSayIter(res)
+        
+        return res      
+    
+    def countAndSayIter(self, str0):
+       
+        res = ''
+        i = 1
+        c = str0[0]
+        n = 1
+        while (i<len(str0)):
+            if (str0[i-1]==str0[i]): 
+                n += 1
+            else: 
+                res += str(n) + c
+                c = str0[i]
+                n = 1
+            i += 1
+        res += str(n) + c
+        
+        return res  
+```
+
+<br><hr><br>
+
+## 36. Valid Sudoku
+### Medium
+
+<a href='https://leetcode.com/problems/valid-sudoku/'>https://leetcode.com/problems/valid-sudoku/</a>
+
+Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+1.Each row must contain the digits 1-9 without repetition.
+2.Each column must contain the digits 1-9 without repetition.
+3.Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+
+img[](.img/250px-Sudoku-by-L2G-20050714.svg.png)
+
+A partially filled sudoku which is valid.
+
+The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
+
+Example 1:
+```
+Input:
+[
+  ["5","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+]
+Output: true
+```
+Example 2:
+```
+Input:
+[
+  ["8","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+]
+Output: false
+Explanation: Same as Example 1, except with the 5 in the top left corner being 
+    modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
+```
+Note:
+
+A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+Only the filled cells need to be validated according to the mentioned rules.
+The given board contain only digits 1-9 and the character '.'.
+The given board size is always 9x9.
+
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 72 ms, faster than 16.82% of Python3 online submissions for Valid Sudoku.
+<br>Memory Usage: 13.3 MB, less than 10.22% of Python3 online submissions for Valid Sudoku.</strong>
+<br>
+
+```python
+import collections
+
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        for i in range(9):
+            if (self.judgeValid(board[i])==False): return False
+            if (self.judgeValid([board[j][i] for j in range(9)])==False): return False
+        for i in range(3):
+            for j in range(3):
+                if (self.judgeValid(board[0+j*3][0+i*3:3+i*3]+board[1+j*3][0+i*3:3+i*3]+board[2+j*3][0+i*3:3+i*3])==False): return False
+        
+        return True
+        
+        
+        
+    def judgeValid(self, nums):
+        dc = collections.Counter(nums)
+        for k,v in dc.items():
+            if (v > 1 and k != '.'): return False
+        return True
+```
+
+<br><hr><br>
+
+## 35. Search Insert Position
+### Easy
+
+<a href='https://leetcode.com/problems/search-insert-position/'>https://leetcode.com/problems/search-insert-position/</a>
+
+Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+You may assume no duplicates in the array.
+
+Example 1:
+```
+Input: [1,3,5,6], 5
+Output: 2
+```
+Example 2:
+```
+Input: [1,3,5,6], 2
+Output: 1
+```
+Example 3:
+```
+Input: [1,3,5,6], 7
+Output: 4
+```
+Example 4:
+```
+Input: [1,3,5,6], 0
+Output: 0
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 36 ms, faster than 87.98% of Python3 online submissions for Search Insert Position.
+<br>Memory Usage: 13.6 MB, less than 77.10% of Python3 online submissions for Search Insert Position.</strong>
+<br>
+
+```python
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        if nums==[]: return 0
+        if nums[0]>=target: return 0
+        if nums[-1]<target: return len(nums)
+        
+        for i in range(len(nums)-1):
+            if (nums[i]<target and nums[i+1]>=target): return i+1
+```
+
+<br><hr><br>
+
+## 34. Find First and Last Position of Element in Sorted Array
+### Medium
+
+<a href='https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/'>https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/</a>
+
+Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+
+Your algorithm's runtime complexity must be in the order of O(log n).
+
+If the target is not found in the array, return [-1, -1].
+
+Example 1:
+```
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+```
+Example 2:
+```
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 32 ms, faster than 98.34% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.<br>
+Memory Usage: 13.8 MB, less than 64.49% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.</strong>
+<br>
+
+```python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if (nums==[]): return [-1,-1]
+        if (len(nums)==1):
+            if (nums[0]==target): return [0,0]
+            else: return [-1,-1]
+            
+        low = 0 
+        high = len(nums)-1
+        
+        while (low<=high):
+            mid = (low+high) // 2
+            if (nums[mid]==target):
+                i, j = 0, 0
+                while (mid-i-1>=low):
+                    if (nums[mid-i-1]==target):
+                        i += 1
+                    else:
+                        break
+                while (mid+j+1<=high):
+                    if (nums[mid+j+1]==target):
+                        j += 1
+                    else:
+                        break
+                return [mid-i,mid+j]
+            
+            elif (nums[mid]>target):
+                high = mid - 1
+            else:
+                low = mid + 1
+        
+        return [-1,-1]
+```
+
+<br><hr><br>
+
+## 33. Search in Rotated Sorted Array
+### Medium
+
+<a href='https://leetcode.com/problems/search-in-rotated-sorted-array/'>https://leetcode.com/problems/search-in-rotated-sorted-array/</a>
+
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+
+You are given a target value to search. If found in the array return its index, otherwise return -1.
+
+You may assume no duplicate exists in the array.
+
+Your algorithm's runtime complexity must be in the order of O(log n).
+
+Example 1:
+```
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+```
+Example 2:
+```
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 32 ms, faster than 96.22% of Python3 online submissions for Search in Rotated Sorted Array.<br>
+Memory Usage: 13.1 MB, less than 86.31% of Python3 online submissions for Search in Rotated Sorted Array.</strong>
+<br>
+
+```python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if (nums==[]): return -1
+        
+        low = 0
+        high = len(nums) - 1
+        mid = (low + high) // 2
+        #1st half: nums[0:mid]
+        #2nd half: nums[mid:]
+        
+        if (high==0):
+            if (nums[high]==target): return high
+            else: return -1
+        if (high==1):
+            if (nums[high]==target): return high
+            if (nums[0]==target): return 0
+            else: return -1
+        
+        #Pivot is 2nd half
+        if (nums[0]==sorted(nums[0:mid])[0]):
+            if (nums[0]>target or nums[mid-1]<target):
+                #target is possibly in 2nd half
+                if (self.search(nums[mid:], target)==-1):
+                    return -1
+                else:
+                    return mid + self.search(nums[mid:], target)
+            else:
+                if (self.binSearch(nums[0:mid], target)==-1):
+                    return -1
+                else:
+                    return self.binSearch(nums[0:mid], target)
+                
+        #Pivot is 1st half
+        else:
+            if (nums[mid]>target or nums[len(nums)-1]<target):
+                #target is possibly in 1st half
+                if (self.search(nums[0:mid], target)==-1):
+                    return -1
+                else:
+                    return self.search(nums[0:mid], target)
+            else:
+                if (self.binSearch(nums[mid:], target)==-1):
+                    return -1
+                else:
+                    return mid + self.binSearch(nums[mid:], target)
+        
+        
+    def binSearch(self, nums, target):
+        low = 0
+        high = len(nums) - 1
+        
+        while (low <= high):
+            mid = (low + high) // 2
+            if (nums[mid]==target):
+                return mid
+            elif nums[mid] > target:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return -1 
+```
+
+<br><hr><br>
+
+
+## 31. Next Permutation
+### Medium
+
+<a href='https://leetcode.com/problems/next-permutation/'>https://leetcode.com/problems/next-permutation/</a>
+
+Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+
+If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+
+The replacement must be in-place and use only constant extra memory.
+
+Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+```
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 72 ms, faster than 6.42% of Python3 online submissions for Next Permutation.
+<br>Memory Usage: 13.3 MB, less than 12.71% of Python3 online submissions for Next Permutation.</strong>
+<br>
+
+```python
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        
+        if (len(nums) <= 1): 
+            return
+        if (len(nums) == 2):
+            nums[0], nums[1] = nums[1], nums[0]
+            return
+        if (nums == sorted(nums,reverse=True)):
+            nums.sort()
+            return
+        
+        nums1 = nums[1:]
+        if (nums1==sorted(nums1,reverse=True)): 
+            for i,l in enumerate(sorted(nums1)):
+                if nums[0] < l:
+                    nums[:] = [l] + sorted([nums[0]] + sorted(nums1)[:i]+sorted(nums1)[i+1:])
+                    break
+            return
+        else:
+            self.nextPermutation(nums1)
+            nums[:] = [nums[0]] + nums1
+            return 
+```
+
+<br><hr><br>
+
+## 28. Implement strStr()
+### Easy
+
+<a href='https://leetcode.com/problems/implement-strstr/'>https://leetcode.com/problems/implement-strstr/</a>
+
+Implement strStr().
+
+Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+Example 1:
+```
+Input: haystack = "hello", needle = "ll"
+Output: 2
+```
+Example 2:
+```
+Input: haystack = "aaaaa", needle = "bba"
+Output: -1
+```
+Clarification:
+
+What should we return when needle is an empty string? This is a great question to ask during an interview.
+
+For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 28 ms, faster than 99.12% of Python3 online submissions for Implement strStr().
+<br>Memory Usage: 13.1 MB, less than 98.23% of Python3 online submissions for Implement strStr().</strong>
+<br>
+
+```python
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        
+        if (needle == ''): return 0
+        
+        for i in range(len(haystack)-len(needle)+1):
+            if (self.strStart(haystack[i:],needle)==True): return i
+        
+        return -1
+                      
+    def strStart(self, h0, n0) -> bool:
+        if (len(h0) < len(n0) or h0=='' or n0==''): return False
+        if (h0[0:len(n0)] == n0): return True
+        return False
+```
+
+<br><hr><br>
 
 ## 27. Remove Element
 ### Easy
@@ -82,7 +645,7 @@ for (int i = 0; i < len; i++) {
 <hr>
 <br>
 
-<strong>My code result - Date unknown<brRuntime: 36 ms, faster than 88.82% of Python3 online submissions for Remove Element.
+<strong>My code result - Date unknown<br>Runtime: 36 ms, faster than 88.82% of Python3 online submissions for Remove Element.
 <br>Memory Usage: 13.2 MB, less than 47.82% of Python3 online submissions for Remove Element.</strong>
 <br>
 
@@ -216,6 +779,54 @@ class Solution:
             pre.next, a.next, b.next = b, b.next, a
             pre = a
         return self.next
+```
+
+<br><hr><br>
+
+
+## 22. Generate Parentheses
+### Medium
+
+<a href='https://leetcode.com/problems/generate-parentheses/'>https://leetcode.com/problems/generate-parentheses/</a>
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+For example, given n = 3, a solution set is:
+```
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 76 ms, faster than 6.84% of Python3 online submissions for Generate Parentheses.
+<br>Memory Usage: 13.3 MB, less than 71.57% of Python3 online submissions for Generate Parentheses.</strong>
+<br>
+
+```python
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        if (n==0): return [""]
+        if (n==1): return["()"]
+               
+        res = []
+  
+        for i in range(1,int(n/2)+1):
+            for x in self.generateParenthesis(n-i):
+                for y in self.generateParenthesis(i):
+                    if (x+y not in res):
+                        res += [x+y]
+                    if (y+x not in res):
+                        res += [y+x]
+                if ("("*i+x+")"*i not in res):
+                    res += ["("*i+x+")"*i]
+
+        return res
 ```
 
 <br><hr><br>
