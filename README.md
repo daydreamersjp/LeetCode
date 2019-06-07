@@ -1,12 +1,12 @@
 # LeetCode
 
 Runtime Statistics:<br>
-Top 0-20%   : 3 times   <br>
+Top 0-20%   : 5 times   <br>
 Top 20-40%  : 2 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 0 time    <br>
-Top 80-100% : 7 times   <br>
-Total: 15 questions accepted <br>
+Top 80-100% : 10 times   <br>
+Total: 20 questions accepted <br>
 
 Questions:<br>
 [(Medium) 2. Add Two Numbers](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
@@ -24,8 +24,241 @@ Questions:<br>
 [(Medium) 17. Letter Combinations of a Phone Number](https://github.com/daydreamersjp/LeetCode#17-letter-combinations-of-a-phone-number)<br>
 [(Medium) 18. 4Sum](https://github.com/daydreamersjp/LeetCode#18-4sum)<br>
 [(Easy) 20. Valid Parentheses](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#20-valid-parentheses)<br>
+[(Easy) 21. Merge Two Sorted Lists](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#21-merge-two-sorted-lists)<br>
+[(Medium) 22. Generate Parentheses](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#22-generate-parentheses)<br>
+[(Medium) 24. Swap Nodes in Pairs](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#24-swap-nodes-in-pairs)<br>
+[(Easy) 26. Remove Duplicates from Sorted Array](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#26-remove-duplicates-from-sorted-array)<br>
+[(Easy) 27. Remove Element](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#27-remove-element)<br>
 
 <hr>
+
+## 27. Remove Element
+### Easy
+
+<a href='https://leetcode.com/problems/remove-element/'>https://leetcode.com/problems/remove-element/</a>
+
+Given an array nums and a value val, remove all instances of that value in-place and return the new length.
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+
+Example 1:
+```
+Given nums = [3,2,2,3], val = 3,
+
+Your function should return length = 2, with the first two elements of nums being 2.
+
+It doesn't matter what you leave beyond the returned length.
+```
+Example 2:
+```
+Given nums = [0,1,2,2,3,0,4,2], val = 2,
+
+Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.
+
+Note that the order of those five elements can be arbitrary.
+
+It doesn't matter what values are set beyond the returned length.
+```
+Clarification:
+
+Confused why the returned value is an integer but your answer is an array?
+
+Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.
+
+Internally you can think of this:
+```
+// nums is passed in by reference. (i.e., without making a copy)
+int len = removeElement(nums, val);
+
+// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<brRuntime: 36 ms, faster than 88.82% of Python3 online submissions for Remove Element.
+<br>Memory Usage: 13.2 MB, less than 47.82% of Python3 online submissions for Remove Element.</strong>
+<br>
+
+```python
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        if len(nums)==0: return 0
+        
+        i = 0
+        j = 0
+        for j in range(len(nums)):
+            if nums[j] != val:
+                nums[i] = nums[j]
+                i += 1
+        
+        return i
+```
+
+<br><hr><br>
+
+## 26. Remove Duplicates from Sorted Array
+### Easy
+
+<a href='https://leetcode.com/problems/remove-duplicates-from-sorted-array/'>https://leetcode.com/problems/remove-duplicates-from-sorted-array/</a>
+
+Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+Example 1:
+```
+Given nums = [1,1,2],
+
+Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
+
+It doesn't matter what you leave beyond the returned length.
+```
+Example 2:
+```
+Given nums = [0,0,1,1,1,2,2,3,3,4],
+
+Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.
+
+It doesn't matter what values are set beyond the returned length.
+```
+Clarification:
+
+Confused why the returned value is an integer but your answer is an array?
+
+Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.
+
+Internally you can think of this:
+```
+// nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);
+
+// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 92 ms, faster than 13.49% of Python3 online submissions for Remove Duplicates from Sorted Array.<br>Memory Usage: 14.9 MB, less than 15.29% of Python3 online submissions for Remove Duplicates from Sorted Array.</strong>
+<br>
+
+```python
+from collections import Counter 
+class Solution:
+#     def removeDuplicates(self, nums: List[int]) -> int:
+#         if len(nums)==0: return 0
+#         numsdict = Counter(nums)
+#         for k,v in numsdict.items():
+#             if v > 1:
+#                 for _ in range(v-1):
+#                     nums.remove(k)
+        
+#         return len(nums)
+    
+    def removeDuplicates(self, nums):
+        i = 0
+        while i < len(nums)-1:
+            if nums[i] == nums[i+1]:
+                del nums[i]
+            else:
+                i += 1
+        return len(nums)
+```
+
+<br><hr><br>
+
+## 24. Swap Nodes in Pairs
+### Medium
+
+<a href='https://leetcode.com/problems/swap-nodes-in-pairs/'>https://leetcode.com/problems/swap-nodes-in-pairs/</a>
+
+Given a linked list, swap every two adjacent nodes and return its head.
+
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+ 
+
+Example:
+```
+Given 1->2->3->4, you should return the list as 2->1->4->3.
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 36 ms, faster than 88.64% of Python3 online submissions for Swap Nodes in Pairs.
+<br>Memory Usage: 13 MB, less than 88.19% of Python3 online submissions for Swap Nodes in Pairs.</strong>
+<br>
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def swapPairs(self, head: ListNode) -> ListNode:
+        pre, pre.next = self, head
+        while pre.next and pre.next.next:
+            a = pre.next
+            b = pre.next.next
+            pre.next, a.next, b.next = b, b.next, a
+            pre = a
+        return self.next
+```
+
+<br><hr><br>
+
+
+## 21. Merge Two Sorted Lists
+### Easy
+
+<a href='https://leetcode.com/problems/merge-two-sorted-lists/'>https://leetcode.com/problems/merge-two-sorted-lists/</a>
+
+Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+
+Example:
+```
+Input: 1->2->4, 1->3->4
+Output: 1->1->2->3->4->4
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - Date unknown<br>Runtime: 36 ms, faster than 98.29% of Python3 online submissions for Merge Two Sorted Lists.
+<br>Memory Usage: 13.3 MB, less than 12.33% of Python3 online submissions for Merge Two Sorted Lists.</strong>
+<br>
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+       
+        if l1 and l2:
+            if l1.val > l2.val:
+                l1, l2 = l2, l1
+            l1.next = self.mergeTwoLists(l1.next, l2)
+        return l1 or l2
+```
+
+<br><hr><br>
 
 ## 20. Valid Parentheses
 ### Easy
