@@ -2,11 +2,11 @@
 
 Runtime Statistics:<br>
 Top 0-20%   : 8 times   <br>
-Top 20-40%  : 2 time    <br>
+Top 20-40%  : 3 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 0 time    <br>
 Top 80-100% : 15 times   <br>
-Total: 28 questions accepted <br>
+Total: 29 questions accepted <br>
 
 Questions:<br>
 [(Medium) 2. Add Two Numbers](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
@@ -37,10 +37,93 @@ Questions:<br>
 [(Medium) 36. Valid Sudoku](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#36-valid-sudoku)<br>
 [(Easy) 38. Count and Say](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#38-count-and-say)<br>
 [(Medium) 39. Combination Sum](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#39-combination-sum)<br>
-
+[(Medium) 40. Combination Sum II](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#40-combination-sum-ii)<br>
 
 <hr>
 
+## 40. Combination Sum II
+### Medium
+
+<a href='https://leetcode.com/problems/combination-sum-ii/'>https://leetcode.com/problems/combination-sum-ii/</a>
+
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+
+Each number in candidates may only be used once in the combination.
+
+Note:
+
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+Example 1:
+```
+Input: candidates = [10,1,2,7,6,1,5], target = 8,
+A solution set is:
+[
+  [1, 7],
+  [1, 2, 5],
+  [2, 6],
+  [1, 1, 6]
+]
+```
+Example 2:
+```
+Input: candidates = [2,5,2,1,2], target = 5,
+A solution set is:
+[
+  [1,2,2],
+  [5]
+]
+```
+<br>
+<hr>
+<br>
+
+<strong>My code result - 2019/06/08 2:15AM<br>Runtime: 120 ms, faster than 31.36% of Python3 online submissions for Combination Sum II.
+<br>Memory Usage: 13.2 MB, less than 43.57% of Python3 online submissions for Combination Sum II.</strong>
+<br>
+
+```python
+class Solution:
+    def combinationSum2(self, c, t):
+        ##
+        ## c: List[int]
+        ## t: int   
+        ## -> List[List[int]]
+        
+        if (len(c)==0): return []
+        if (min(c) > t): return []
+        
+        res = []
+        c.sort()
+        for n in range(len(c)):
+            if (sum(c[:n+1]) <= t):
+                for r in self.combSumBy(c,t,n+1):
+                    if (r not in res): 
+                        res += [r]
+            else:
+                break
+        
+        return res
+
+    
+    def combSumBy(self,c,t,n):
+        c.sort()
+        if (sum(c[:n])>t): return []
+        
+        res = []
+        if (n==1):
+            for v in c:
+                if (v > t): break
+                elif (v==t and ([v] not in res)):
+                    res += [[v]]
+        else:
+            for i,v in enumerate(c):
+                rec = self.combSumBy(c[i+1:],t-v,n-1)
+                res += [ [c[i]] + r for r in rec if r not in res]
+        return res
+```
+
+<br><hr><br>
 
 ## 39. Combination Sum
 ### Medium
