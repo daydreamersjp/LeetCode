@@ -4,9 +4,9 @@ Runtime Statistics:<br>
 Top 0-20%   : 8 times   <br>
 Top 20-40%  : 3 time    <br>
 Top 40-60%  : 3 times    <br>
-Top 60-80%  : 0 time    <br>
+Top 60-80%  : 1 time    <br>
 Top 80-100% : 15 times   <br>
-Total: 29 questions accepted <br>
+Total: 30 questions accepted <br>
 
 Questions:<br>
 [(Medium) 2. Add Two Numbers](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
@@ -38,8 +38,63 @@ Questions:<br>
 [(Easy) 38. Count and Say](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#38-count-and-say)<br>
 [(Medium) 39. Combination Sum](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#39-combination-sum)<br>
 [(Medium) 40. Combination Sum II](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#40-combination-sum-ii)<br>
+[(Medium) 43. Multiply Strings](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#43-multiply-strings)<br>
 
 <hr>
+
+
+## 43. multiply Strings
+### Medium
+
+<a href='https://leetcode.com/problems/multiply-strings/'>https://leetcode.com/problems/multiply-strings/</a>
+
+Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+
+Example 1:
+```
+Input: num1 = "2", num2 = "3"
+Output: "6"
+```
+Example 2:
+```
+Input: num1 = "123", num2 = "456"
+Output: "56088"
+```
+Note:
+
+The length of both num1 and num2 is < 110.
+Both num1 and num2 contain only digits 0-9.
+Both num1 and num2 do not contain any leading zero, except the number 0 itself.
+You must not use any built-in BigInteger library or convert the inputs to integer directly.
+
+<br>
+<hr>
+<br>
+
+<strong>My code result - 2019/06/09 10:19PM<br>Runtime: 44 ms, faster than 79.40% of Python3 online submissions for Multiply Strings.
+<br>Memory Usage: 13.3 MB, less than 22.43% of Python3 online submissions for Multiply Strings.</strong>
+<br>
+
+```python
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        dc = '0123456789'              
+        return self.convInt2Str(dc, self.convStr2Int(dc, num1)*self.convStr2Int(dc, num2) )
+        
+    def convStr2Int(self, dc, nums):
+        if len(nums)==1: 
+            return dc.index(nums)
+        else: 
+            return dc.index(nums[len(nums)-1]) + 10 * self.convStr2Int(dc,nums[:-1])
+    
+    def convInt2Str(self, dc, num):
+        if (num//10==0): 
+            return dc[num]
+        else:
+            return self.convInt2Str(dc, num // 10) + dc[num % 10]
+```
+
+<br><hr><br>
 
 ## 40. Combination Sum II
 ### Medium
