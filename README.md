@@ -69,8 +69,10 @@ Output:
 <hr>
 <br>
 
-<strong>My code result - 2019/06/30 16:56PM<br>Runtime: 64 ms, faster than 15.36% of Python3 online submissions for Permutations.
-<br>Memory Usage: 13.5 MB, less than 8.95% of Python3 online submissions for Permutations.</strong>
+#### My code result - 2019/06/30 16:56PM
+
+Runtime: 64 ms, faster than 15.36% of Python3 online submissions for Permutations.
+<br>Memory Usage: 13.5 MB, less than 8.95% of Python3 online submissions for Permutations.
 <br>
 
 ```python
