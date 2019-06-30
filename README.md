@@ -1,7 +1,7 @@
 # LeetCode
 
 Runtime Statistics:<br>
-Top 0-20%   : 8 times   <br>
+Top 0-20%   : 9 times   <br>
 Top 20-40%  : 3 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 1 time    <br>
@@ -39,8 +39,56 @@ Questions:<br>
 [(Medium) 39. Combination Sum](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#39-combination-sum)<br>
 [(Medium) 40. Combination Sum II](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#40-combination-sum-ii)<br>
 [(Medium) 43. Multiply Strings](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#43-multiply-strings)<br>
+[(Medium) 46. Permutations](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#46-permutations)<br>
 
 <hr>
+
+## 46. Permutations
+### Medium
+
+<a href='https://leetcode.com/problems/permutations/'>https://leetcode.com/problems/permutations/</a>
+
+Given a collection of distinct integers, return all possible permutations.
+
+Example:
+
+```
+Input: [1,2,3]
+Output:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+```
+
+<br>
+<hr>
+<br>
+
+<strong>My code result - 2019/06/30 16:56PM<br>Runtime: 64 ms, faster than 15.36% of Python3 online submissions for Permutations.
+<br>Memory Usage: 13.5 MB, less than 8.95% of Python3 online submissions for Permutations.</strong>
+<br>
+
+```python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        if len(nums)==1:
+            return [nums]
+        
+        res = []
+        
+        for i,x in enumerate(nums):
+            for res_p in self.permute(nums[:i]+nums[i+1:]):
+                res += [ [x] + res_p ]
+        
+        return res
+```
+
+<br><hr><br>
 
 
 ## 43. multiply Strings
