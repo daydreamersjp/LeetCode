@@ -1,10 +1,10 @@
 # LeetCode
 
 Runtime Statistics:<br>
-Top 0-20%   : 10 times   <br>
+Top 0-20%   : 9 times   <br>
 Top 20-40%  : 3 time    <br>
 Top 40-60%  : 3 times    <br>
-Top 60-80%  : 1 time    <br>
+Top 60-80%  : 2 time    <br>
 Top 80-100% : 15 times   <br>
 Total: 30 questions accepted <br>
 
@@ -70,23 +70,30 @@ Output:
 
 #### My code result - 2019/07/13 16:30PM
 
-Runtime: 1064 ms, faster than 5.06% of Python3 online submissions for Permutations II.
-<br>Memory Usage: 13.6 MB, less than 19.47% of Python3 online submissions for Permutations II.
+Runtime: 72 ms, faster than 77.30% of Python3 online submissions for Permutations II.
+<br>Memory Usage: 13.5 MB, less than 36.76% of Python3 online submissions for Permutations II.
 <br>
 
 ```python
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:   
-        def permSupportFunc(nums, perm):
-            if len(nums)==1 and perm+nums not in res:
-                res.append(perm+nums)
-
-            for i,n in enumerate(nums):
-                permSupportFunc(nums[:i]+nums[i+1:],perm+[n])
         
-        res = []
-        permSupportFunc(nums, [])
-        return res
+        if len(nums)<=1: 
+            return [nums]
+        
+        self.res = []
+        self.permSupportFunc(nums, [])
+        return self.res
+    
+    
+    def permSupportFunc(self,nums, perm):
+        if len(nums)==1:
+            self.res.append(perm+nums)
+
+        for i,n in enumerate(set(nums)):
+            numsCopy = nums.copy()
+            numsCopy.remove(n)
+            self.permSupportFunc(numsCopy,perm+[n])
 ```
 <br>
 <hr>
@@ -94,7 +101,7 @@ class Solution:
 
 #### Commment:
 
-Too slow. Should think about another logic when the input list has a lot of duplicative numbers. 
+na.
 
 <br><hr><br>
 
