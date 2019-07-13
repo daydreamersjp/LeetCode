@@ -1,7 +1,7 @@
 # LeetCode
 
 Runtime Statistics:<br>
-Top 0-20%   : 9 times   <br>
+Top 0-20%   : 10 times   <br>
 Top 20-40%  : 3 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 1 time    <br>
@@ -40,8 +40,64 @@ Questions:<br>
 [(Medium) 40. Combination Sum II](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#40-combination-sum-ii)<br>
 [(Medium) 43. Multiply Strings](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#43-multiply-strings)<br>
 [(Medium) 46. Permutations](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#46-permutations)<br>
+[(Medium) 47. Permutations II](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#47-permutations-ii)<br>
+
 
 <hr>
+
+
+## 47. Permutations II
+### Medium
+
+<a href='https://leetcode.com/problems/permutations-ii/'>https://leetcode.com/problems/permutations-ii/</a>
+
+Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+
+Example:
+```
+Input: [1,1,2]
+Output:
+[
+  [1,1,2],
+  [1,2,1],
+  [2,1,1]
+]
+```
+
+<br>
+<hr>
+<br>
+
+#### My code result - 2019/07/13 16:30PM
+
+Runtime: 1064 ms, faster than 5.06% of Python3 online submissions for Permutations II.
+<br>Memory Usage: 13.6 MB, less than 19.47% of Python3 online submissions for Permutations II.
+<br>
+
+```python
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:   
+        def permSupportFunc(nums, perm):
+            if len(nums)==1 and perm+nums not in res:
+                res.append(perm+nums)
+
+            for i,n in enumerate(nums):
+                permSupportFunc(nums[:i]+nums[i+1:],perm+[n])
+        
+        res = []
+        permSupportFunc(nums, [])
+        return res
+```
+<br>
+<hr>
+<br>
+
+#### Commment:
+
+Too slow. Should think about another logic when the input list has a lot of duplicative numbers. 
+
+<br><hr><br>
+
 
 ## 46. Permutations
 ### Medium
