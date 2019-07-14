@@ -127,7 +127,13 @@ class Solution:
 
 #### Commment:
 
-None.
+The most simplest solution in the Discuss was:
+
+```
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        matrix[::] = zip(*matrix[::-1])
+```
 
 <br><hr><br>
 
