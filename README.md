@@ -5,8 +5,8 @@ Top 0-20%   : 9 times   <br>
 Top 20-40%  : 3 time    <br>
 Top 40-60%  : 3 times    <br>
 Top 60-80%  : 2 time    <br>
-Top 80-100% : 15 times   <br>
-Total: 30 questions accepted <br>
+Top 80-100% : 16 times   <br>
+Total: 32 questions accepted <br>
 
 Questions:<br>
 [(Medium) 2. Add Two Numbers](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
@@ -41,9 +41,95 @@ Questions:<br>
 [(Medium) 43. Multiply Strings](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#43-multiply-strings)<br>
 [(Medium) 46. Permutations](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#46-permutations)<br>
 [(Medium) 47. Permutations II](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#47-permutations-ii)<br>
+[(Medium) 48. Rotate Image](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#48-rotete-image)<br>
 
 
 <hr>
+
+
+## 48. Rotate Image
+### Medium
+
+<a href='https://leetcode.com/problems/rotate-image/'>https://leetcode.com/problems/rotate-image/</a>
+
+You are given an n x n 2D matrix representing an image.
+
+Rotate the image by 90 degrees (clockwise).
+
+Note:
+
+You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+Example 1:
+```
+Given input matrix = 
+[
+  [1,2,3],
+  [4,5,6],
+  [7,8,9]
+],
+
+rotate the input matrix in-place such that it becomes:
+[
+  [7,4,1],
+  [8,5,2],
+  [9,6,3]
+]
+```
+
+Example 2:
+```
+Given input matrix =
+[
+  [ 5, 1, 9,11],
+  [ 2, 4, 8,10],
+  [13, 3, 6, 7],
+  [15,14,12,16]
+], 
+
+rotate the input matrix in-place such that it becomes:
+[
+  [15,13, 2, 5],
+  [14, 3, 4, 1],
+  [12, 6, 8, 9],
+  [16, 7,10,11]
+]
+```
+
+<br>
+<hr>
+<br>
+
+#### My code result - 2019/07/14 8:50AM
+
+Runtime: 32 ms, faster than 96.42% of Python3 online submissions for Rotate Image.
+<br>Memory Usage: 13.3 MB, less than 8.81% of Python3 online submissions for Rotate Image.
+<br>
+
+```python
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        n = len(matrix)
+        if n<=0: 
+            pass
+        
+        matrix_temp = [[matrix[n-i-1][j] for i in range(n)] for j in range(n)]
+        for j in range(n):
+            for i in range(n):
+                matrix[i][j] = matrix_temp[i][j]
+```
+<br>
+<hr>
+<br>
+
+#### Commment:
+
+None.
+
+<br><hr><br>
 
 
 ## 47. Permutations II
@@ -101,7 +187,7 @@ class Solution:
 
 #### Commment:
 
-na.
+None.
 
 <br><hr><br>
 
