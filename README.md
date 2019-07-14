@@ -127,7 +127,7 @@ class Solution:
 
 #### Commment:
 
-The most simplest solution in the Discuss was:
+The simplest solution in the Discuss was:
 
 ```
 class Solution:
