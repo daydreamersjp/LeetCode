@@ -41,7 +41,7 @@ Questions:<br>
 [(Medium) 43. Multiply Strings](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#43-multiply-strings)<br>
 [(Medium) 46. Permutations](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#46-permutations)<br>
 [(Medium) 47. Permutations II](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#47-permutations-ii)<br>
-[(Medium) 48. Rotate Image](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#48-rotete-image)<br>
+[(Medium) 48. Rotate Image](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#48-rotate-image)<br>
 
 
 <hr>
