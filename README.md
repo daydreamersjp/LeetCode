@@ -3,10 +3,10 @@
 Runtime Statistics:<br>
 Top 0-20%   : 9 times   <br>
 Top 20-40%  : 3 time    <br>
-Top 40-60%  : 3 times    <br>
+Top 40-60%  : 4 times    <br>
 Top 60-80%  : 2 time    <br>
 Top 80-100% : 16 times   <br>
-Total: 32 questions accepted <br>
+Total: 33 questions accepted <br>
 
 Questions:<br>
 [(Medium) 2. Add Two Numbers](https://github.com/daydreamersjp/LeetCode#2-add-two-numbers)<br>
@@ -42,10 +42,71 @@ Questions:<br>
 [(Medium) 46. Permutations](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#46-permutations)<br>
 [(Medium) 47. Permutations II](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#47-permutations-ii)<br>
 [(Medium) 48. Rotate Image](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#48-rotate-image)<br>
+[(Medium) 49. Group Anagrams](https://github.com/daydreamersjp/LeetCode/blob/master/README.md#49-group-anagrams)<br>
 
 
 <hr>
 
+
+
+## 49. Group Anagrams
+### Medium
+
+<a href='https://leetcode.com/problems/group-anagrams/'>https://leetcode.com/problems/group-anagrams/</a>
+
+Given an array of strings, group anagrams together.
+
+Example:
+```
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+```
+
+Note:
+
+  - All inputs will be in lowercase.
+  - The order of your output does not matter.
+
+<br>
+<hr>
+<br>
+
+#### My code result - 2019/07/15 10:40PM
+
+Runtime: 120 ms, faster than 50.34% of Python3 online submissions for Group Anagrams.
+<br>Memory Usage: 15.7 MB, less than 91.18% of Python3 online submissions for Group Anagrams.
+<br>
+
+```python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        if len(strs)==0: 
+            return []
+        
+        resdict = {}
+        for s in strs:
+            sorteds = ''.join(sorted([c for c in s]))
+            if sorteds not in resdict.keys():
+                resdict[sorteds] = [s]
+            else:
+                resdict[sorteds] += [s]
+                
+        return [res for res in resdict.values()]
+```
+<br>
+<hr>
+<br>
+
+#### Commment:
+
+None.
+
+<br><hr><br>
 
 ## 48. Rotate Image
 ### Medium
